@@ -1,38 +1,12 @@
+import { useState } from "react";
 
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "../components/Button";
-import Modal from "../components/Modal";
-import { getAllPasswords, getMasterString } from "../services/passwordService";
 const Dashboard = () => {
-    const [breachStatus, setBreachStatus] = useState("no");
-    const [masterString, setMasterString] = useState("");
-    const [totalPasswords, setTotalPasswords] = useState(0);
-    const navigate = useNavigate();
+    const [breachStatus, setBreachStatus] = useState("no"); // or "yes"
+    const totalPasswords = 14;
+    const masterString = "my$uper$ecret"; // Example only
 
-    useEffect(() => {
-        const handlePasswords = async () => {
-            try {
-                const passwords = await getAllPasswords();
-                setTotalPasswords(passwords.length);
-            } catch (error) {
-                console.log("Error Getting the Length", error);
-            }
-        }
-        handlePasswords();
-    }, []);
-    const handleMasterString = async () => {
-        try {
-            const response = await getMasterString();
-            setMasterString(response.masterString);
-            console.log(masterString);
-            // alert(`Master Password : ${masterString}`);
-        } catch (error) {
-            console.log("Error Getting the Master String", error);
-        }
-    }
     return (
-        <div className="p-6 bg-gray-50 h-full space-y-6">
+        <div className="p-6 bg-gray-50 min-h-screen space-y-6">
             {/* Header Stats */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* 🔴 Total Passwords */}
@@ -44,24 +18,23 @@ const Dashboard = () => {
                 {/* 🟠 Master String */}
                 <div className="bg-white p-6 rounded-xl shadow text-center flex flex-col justify-center items-center">
                     <p className="text-gray-500 text-sm">Show Master String</p>
-                    <Button
-                        onClick={() => handleMasterString()}
+                    <button
+                        onClick={() => alert(`Master String: ${masterString}`)}
                         className="mt-2 bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
                     >
                         View
-                    </Button>
-                    {masterString && <Modal heading={"Master key"} message={masterString} route={"/dashboard"} icon={false} buttonText={"Close"} color={"bg-blue-500 hover:bg-blue-600"} />}
+                    </button>
                 </div>
 
                 {/* 🟢 Generate New Password */}
                 <div className="bg-white p-6 rounded-xl shadow text-center flex flex-col justify-center items-center">
                     <p className="text-gray-500 text-sm">Generate New Password</p>
-                    <Button
-                        onClick={() => navigate("/password-generator")}
+                    <button
+                        onClick={() => alert("Redirect to password generation page")}
                         className="mt-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
                     >
                         Generate
-                    </Button>
+                    </button>
                 </div>
             </div>
 
@@ -74,7 +47,18 @@ const Dashboard = () => {
                     <p className="text-green-600 text-xl font-semibold">✅ You are safe!</p>
                 )}
             </div>
-        </div >
+        </div>
+
+        // <div className="flex justify-center items-center mx-auto">
+        //     <div className="bg-white shadow-lg p-6 rounded-lg w-96 text-center">
+        //         <p>Welcome to your secure password manager!</p>
+        //         <div className="mt-4">
+        //             <Button onClick={() => navigate("/password-generator")}>Generate Password</Button>
+        //             <Button onClick={() => navigate("/breach-check")}>Check Breach</Button>
+        //             <Button onClick={handleLogout} className="bg-red-500 mt-2">Logout</Button>
+        //         </div>
+        //     </div>
+        // </div>
     );
 };
 

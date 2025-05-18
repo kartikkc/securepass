@@ -2,22 +2,32 @@ import { useState } from 'react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
 
-const DeactivateModal = ({ heading, message, buttonText, onClose, route, cancelButton }) => {
+const DeactivateModal = ({ heading, icon, message, buttonText, onClose, route, cancelButton, logout, color, onConfirm }) => {
     const [open, setOpen] = useState(true);
     const navigate = useNavigate();
-    const handleOnClose = () => {
+    const handleOnClose = async () => {
         onClose();
-        navigate(route);
+        if (onConfirm) {
+            await onConfirm();
+            navigate(route);
+        }
+        if (logout) {
+            localStorage.removeItem("token");
+            navigate(route);
+        }
+        else {
+            navigate(route);
+        }
     }
-    if (!open) return null;
 
+    if (!open) return null;
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
             <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6">
                 <div className="flex items-start">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-100">
+                    {icon && <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-100">
                         <ExclamationTriangleIcon className="w-6 h-6 text-red-600" aria-hidden="true" />
-                    </div>
+                    </div>}
                     <div className="ml-4">
                         <h3 className="text-lg font-semibold text-gray-900">{heading}</h3>
                         <p className="mt-2 text-sm text-gray-600">
@@ -34,8 +44,8 @@ const DeactivateModal = ({ heading, message, buttonText, onClose, route, cancelB
                         Cancel
                     </button>}
                     <button
-                        onClick={() => { setOpen(false); handleOnClose() }}
-                        className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-500"
+                        onClick={() => { handleOnClose(); setOpen(false); }}
+                        className={`${color ? color : "bg-red-600 hover:bg-red-500"} text-white px-4 py-2 rounded-md `}
                     >
                         {buttonText}
                     </button>

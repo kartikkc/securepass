@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showErrors, setShowErrors] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -18,6 +19,10 @@ const Login = () => {
   }, [navigate]);
   const handleLogin = async (e) => {
     e.preventDefault();
+    if (!email.trim() || !password.trim()) {
+      setShowErrors(true);
+      return;
+    }
     try {
       const response = await loginUser({ email, password });
       if (response.error) {
@@ -46,7 +51,9 @@ const Login = () => {
         <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
         <form onSubmit={handleLogin} >
           <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+          {showErrors && !email.trim() && (<p className="text-xs text-red-600">*Email is required</p>)}
           <Input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          {showErrors && !email.trim() && (<p className="text-xs text-red-600">*Password is required</p>)}
           <Button type="submit">Login</Button>
           <p className="mb-5 text-center text-xs text">Not Registered? <a className=" text-blue-500 no-underline hover:underline" onClick={() => navigate("/signup")}>SignUp</a></p>
         </form>

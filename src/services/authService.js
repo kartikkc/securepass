@@ -20,8 +20,8 @@ export const registerUser = async (userData) => {
     return response.data;
   } catch (error) {
     if (error.response.status == 400) {
-      return { error: "Incomplete Details" };
       console.log(error.response);
+      return { error: "Incomplete Details" };
     }
   }
 };
