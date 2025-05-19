@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PasswordGenerator from "./pages/PasswordGenerator";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 import MasterString from "./pages/MasterString";
 import OauthGoogle from "./pages/OauthGoogle";
 import NotFound from "./pages/NotFound";
