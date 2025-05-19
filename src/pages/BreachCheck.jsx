@@ -12,7 +12,6 @@ const breachData = {
         {
             email: "jaydensh5@gmail.com",
             hash_password: true,
-            password: "cpa5H***********",
             sha1: "3970907d3b4952a81c80e86879060d87f2fbcb37",
             hash: "4qZOfprI2no1MGtKneM6vPqEIdlIenmgiMMdHN/xjA==",
             sources: "Stealer Logs",
@@ -20,7 +19,6 @@ const breachData = {
         {
             email: "jaydensh5@gmail.com",
             hash_password: true,
-            password: "Karti********",
             sha1: "6bbd8f2577c35d038024a74dabbf6965652e3ffe",
             hash: "NSSVfroFOnccEx5RB/vVStKVMphpJSDx78hpSA==",
             sources: "Stealer Logs",
@@ -28,7 +26,6 @@ const breachData = {
         {
             email: "jaydensh5@gmail.com",
             hash_password: true,
-            password: "Karti*********",
             sha1: "580a63f87beb37d635650daeacac128578e4cbd6",
             hash: "yUFfE40GzxClrnkacpzzPNKVMphpJSDx78hpSOk=",
             sources: "Stealer Logs",
