@@ -18,7 +18,11 @@ const OauthGoogle = () => {
             navigate("/login");
         }
     }, [location, navigate]);
-    return (<div>Redirecting...</div>);
+    return (
+        <div>
+            <div className=" text-9xl ">Redirecting.....</div>
+        </div>
+    );
 };
 
 
