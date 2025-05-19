@@ -1,6 +1,6 @@
 import axios from "axios";
 const API_BASE_URL_PASSWORDS = import.meta.env.VITE_API_BASE_URL_PASSWORD;
-const API_BASE_URL = "http://localhost:5000/api/password/masterkey";  // Change this if needed
+const API_BASE_URL_MASTERKEY = import.meta.env.VITE_API_BASE_URL_MASTERKEY;  // Change this if needed
 
 export const generatePassword = async (website) => {
   try {
@@ -59,7 +59,7 @@ export const getAllPasswords = async () => {
 export const getMasterString = async () => {
   try {
     const token = localStorage.getItem("token");
-    const response = await axios.get(`${API_BASE_URL}`, {
+    const response = await axios.get(`${API_BASE_URL_MASTERKEY}`, {
       headers: {
         Authorization: `${token}`
       }
@@ -105,7 +105,7 @@ export const updateOnePassword = async (id, website) => {
       { website },
       {
         headers: {
-          Authorization: token 
+          Authorization: token
         }
       }
     );
