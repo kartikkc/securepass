@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import Passwords from "./pages/Passwords";
 import ProfilePage from "./pages/Profile";
 import BreachCheck from "./pages/BreachCheck";
+import Home from "./pages/Home";
 const PrivateRoute = ({ children }) => {
   const token = localStorage.getItem("token");
   return token ? children : <Navigate to="/login" />;
@@ -18,7 +19,7 @@ const PrivateRoute = ({ children }) => {
 const App = () => {
   return (
     <Routes>
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/masterString" element={<MasterString />} />
