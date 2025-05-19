@@ -8,7 +8,7 @@ export default function LandingPage() {
             {/* Header */}
             <header className="bg-white shadow-md sticky top-0 z-50">
                 <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                    <h1 className="text-2xl font-bold text-blue-500 cursor-pointer">Seucrepass</h1>
+                    <h1 className="text-2xl font-bold text-blue-500 cursor-pointer">Securepass</h1>
                     <nav className="space-x-4 text-sm">
                         <a href="#features" className="hover:text-blue-500 cursor-pointer">Features</a>
                         <a href="#pricing" className="hover:text-blue-500 cursor-pointer">Pricing</a>
