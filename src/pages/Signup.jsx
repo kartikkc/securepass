@@ -54,7 +54,7 @@ const Signup = () => {
           {showError && !masterString.trim() && (<p className="text-xs text-red-500">* Please Enter the masterString</p>)}
           <Button
             type="submit"
-            className={`w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white`}
+            className={`w-full bg-blue-500 hover:bg-blue-600 text-white py-2 my-5 rounded-md transition duration-200`}
           >Signup</Button>
           <p className="mb-5 text-center text-xs text">Already Registered? <a className=" text-blue-500 no-underline hover:underline" onClick={() => { navigate("/login") }}>Login</a></p>
         </form>
